@@ -27,9 +27,15 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public/dist", "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server listening on http://localhost:${PORT}`);
-  console.log(`🚀 React App: http://localhost:${PORT}`);
-  console.log(`📝 Simple Demo: http://localhost:${PORT}/demo`);
-  console.log(`📝 API Endpoint: http://localhost:${PORT}/api/user/register`);
-});
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`✅ Server listening on http://localhost:${PORT}`);
+    console.log(`🚀 React App: http://localhost:${PORT}`);
+    console.log(`📝 Simple Demo: http://localhost:${PORT}/demo`);
+    console.log(`📝 API Endpoint: http://localhost:${PORT}/api/user/register`);
+  });
+}
+
+// Export for Vercel
+module.exports = app;
