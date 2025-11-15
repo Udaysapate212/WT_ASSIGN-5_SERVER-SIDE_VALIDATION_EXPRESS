@@ -50,7 +50,8 @@ const RegistrationForm = ({ onSuccess }) => {
     setServerErrors([])
 
     try {
-      const response = await axios.post('http://localhost:3000/api/user/register', data)
+      const apiUrl = import.meta.env.VITE_API_URL || '/api'
+      const response = await axios.post(`${apiUrl}/user/register`, data)
       
       if (response.data.success) {
         onSuccess(response.data.data)

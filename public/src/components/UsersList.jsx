@@ -12,7 +12,7 @@ const UsersList = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/user/all')
+      const response = await axios.get('/api/user/all')
       if (response.data.success) {
         setUsers(response.data.data)
       }
