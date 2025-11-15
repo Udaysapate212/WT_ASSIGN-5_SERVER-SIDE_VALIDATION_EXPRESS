@@ -12,7 +12,8 @@ const UsersList = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('/api/user/all')
+      const apiUrl = import.meta.env.VITE_API_URL || '/api'
+      const response = await axios.get(`${apiUrl}/user/all`)
       if (response.data.success) {
         setUsers(response.data.data)
       }
